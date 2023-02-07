@@ -1,15 +1,30 @@
+---
+const pageTitle = "Landing Page";
+
+const featured = ["Italian", "American", "Asian"]
+---
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Landing Page</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-
-		<h1>Food Review</h1>
+        <header>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <div>
+                <h1>Food Review</h1>
+                <p>Search</p>
+                <ul>
+                    {featured.map((feature) => <li>{feature}</li>)}
+                </ul>
+                <a>Log In</a>
+                <a>Sign Up</a>
+            </div>
+        </header>
 	</body>
 </html>
