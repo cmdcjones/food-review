@@ -1,7 +1,7 @@
 ---
 const pageTitle = "Landing Page";
 
-const featured = ["Italian", "American", "Asian"]
+const commonCategories = ["Italian", "American", "Asian"]
 const backgroundColor = "#121319";
 const textColor = "#F5F5F5";
 ---
@@ -19,34 +19,80 @@ const textColor = "#F5F5F5";
                 textColor,
             }}
         >
+            :root {
+                box-sizing: border-box;
+            }
+
             html {
                 background-color: var(--backgroundColor);
                 color: var(--textColor);
             }
+
+            p {
+                margin: 0;
+            }
+
+            .landing-header {
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+
+            .auth {
+                margin: 0 5px;
+                padding: 6px;
+                border: 2px solid var(--textColor);
+                border-radius: 8px;
+            }
+
+            .search-container {
+                width: 450px;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .common-categories {
+                margin: 5px;
+                padding: 8px;
+                transition: border-bottom .15s ease;
+            }
+
+            .common-categories:hover {
+                border-bottom: 4px solid #5B9279;
+            }
+
             a {
                 text-decoration: none;
                 color: var(--textColor);
             }
+
             a:hover {
                 color: #A5A5A5;
             }
+
         </style>
 	</head>
 	<body>
-        <div class="landing-header">
-            <header>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <header>
+            <div class="landing-header">
                 <div>
                     <h1>Food Review</h1>
-                    <p>Search</p>
-                    <ul>
-                        {featured.map((feature) => <li>{feature}</li>)}
-                    </ul>
-                    <a href="#">Log In</a>
-                        <a href="#">Sign Up</a>
                 </div>
-            </header>
-        </div>
+                <div class="search-container">
+                    <p>Search box here</p>
+                    <div>
+                        {commonCategories.map((category) => <a href="#" class="common-categories">{category}</a>)}
+                    </div>
+                </div>
+                <div>
+                    <a href="#" class="auth">Log In</a>
+                    <a href="#" class="auth">Sign Up</a>
+                </div>
+            </div>
+        </header>
 	</body>
 </html>
