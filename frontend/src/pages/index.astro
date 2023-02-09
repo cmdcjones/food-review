@@ -2,6 +2,8 @@
 const pageTitle = "Landing Page";
 
 const featured = ["Italian", "American", "Asian"]
+const backgroundColor = "#121319";
+const textColor = "#F5F5F5";
 ---
 
 <html lang="en">
@@ -11,25 +13,40 @@ const featured = ["Italian", "American", "Asian"]
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+        <style
+            define:vars={{
+                backgroundColor,
+                textColor,
+            }}
+        >
+            html {
+                background-color: var(--backgroundColor);
+                color: var(--textColor);
+            }
+            a {
+                text-decoration: none;
+                color: var(--textColor);
+            }
+            a:hover {
+                color: #A5A5A5;
+            }
+        </style>
 	</head>
 	<body>
-        <header>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <div>
-                <h1>Food Review</h1>
-                <p>Search</p>
-                <ul>
-                    {featured.map((feature) => <li>{feature}</li>)}
-                </ul>
-                <a>Log In</a>
-                <a>Sign Up</a>
-            </div>
-        </header>
-        <main>
-            <ul>
-                <li><a href="/reviews/review-1">Review 1</a></li>
-            </ul>
-        </main>
+        <div class="landing-header">
+            <header>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <div>
+                    <h1>Food Review</h1>
+                    <p>Search</p>
+                    <ul>
+                        {featured.map((feature) => <li>{feature}</li>)}
+                    </ul>
+                    <a href="#">Log In</a>
+                        <a href="#">Sign Up</a>
+                </div>
+            </header>
+        </div>
 	</body>
 </html>
