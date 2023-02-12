@@ -1,9 +1,8 @@
 ---
+import "../styles/global.css";
 const pageTitle = "Landing Page";
 
 const commonCategories = ["Italian", "American", "Asian"]
-const backgroundColor = "#121319";
-const textColor = "#F5F5F5";
 ---
 
 <html lang="en">
@@ -13,25 +12,7 @@ const textColor = "#F5F5F5";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
-        <style
-            define:vars={{
-                backgroundColor,
-                textColor,
-            }}
-        >
-            :root {
-                box-sizing: border-box;
-            }
-
-            html {
-                background-color: var(--backgroundColor);
-                color: var(--textColor);
-            }
-
-            p {
-                margin: 0;
-            }
-
+        <style>
             .landing-header {
                 display: flex;
                 justify-content: space-evenly;
@@ -40,9 +21,31 @@ const textColor = "#F5F5F5";
 
             .auth {
                 margin: 0 5px;
-                padding: 6px;
-                border: 2px solid var(--textColor);
+                padding: 8px;
+                transition: background-color .15s ease;
+            }
+
+            .auth:hover {
+                color: var(--text-color);
+            }
+
+            .auth-login {
+                border: 2px solid white;
                 border-radius: 8px;
+            }
+
+            .auth-login:hover {
+                background-color: rgba(255,255,255,.3);
+            }
+            
+            .auth-signup {
+                background-color: #5B9279;
+                border: 2px solid #5B9279;
+                border-radius: 8px;
+            }
+
+            .auth-signup:hover {
+                background-color: #5B9279CA;
             }
 
             .search-container {
@@ -63,15 +66,9 @@ const textColor = "#F5F5F5";
                 border-bottom: 4px solid #5B9279;
             }
 
-            a {
-                text-decoration: none;
-                color: var(--textColor);
+            .hover-arrow {
+                fill: white;
             }
-
-            a:hover {
-                color: #A5A5A5;
-            }
-
         </style>
 	</head>
 	<body>
@@ -85,12 +82,26 @@ const textColor = "#F5F5F5";
                 <div class="search-container">
                     <p>Search box here</p>
                     <div>
-                        {commonCategories.map((category) => <a href="#" class="common-categories">{category}</a>)}
+                        {commonCategories.map((category) => ( 
+                            <a 
+                                href="#" 
+                                class="common-categories no-hover"
+                            >
+                                {category}
+                                <span class="hover-arrow">
+                                    <svg width="24" height="24">
+                                        <path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path>
+                                    </svg>
+                                </span>
+                            </a>
+                        ))}
                     </div>
                 </div>
                 <div>
-                    <a href="#" class="auth">Log In</a>
-                    <a href="#" class="auth">Sign Up</a>
+                    <a href="#" class="auth auth-login">Log In</a>
+                    <a href="#" class="auth auth-signup">Sign Up</a>
+                    <svg width="24" height="24">
+                    </svg>
                 </div>
             </div>
         </header>

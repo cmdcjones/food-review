@@ -1,0 +1,28 @@
+:root {
+    box-sizing: border-box;
+    --background-color: #121319;
+    --text-color: #F5F5F5;
+}
+
+html {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+a:hover {
+    color: #A5A5A5;
+}
+
+a.no-hover {
+    color: var(--text-color);
+}
