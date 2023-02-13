@@ -13,10 +13,15 @@ const commonCategories = ["Italian", "American", "Asian"]
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
         <style>
+
+            h1 {
+                font-size: 24px;
+            }
+
             .landing-header {
                 display: flex;
                 justify-content: space-evenly;
-                align-items: center;
+                align-items: start;
             }
 
             .auth {
@@ -49,16 +54,32 @@ const commonCategories = ["Italian", "American", "Asian"]
             }
 
             .search-container {
-                width: 450px;
+                width: 600px;
                 display: flex;
                 align-items: center;
                 flex-direction: column;
                 gap: 20px;
             }
 
-            .common-categories {
-                margin: 5px;
+            .pseudo-input-container {
+                width: 500px;
+                height: 20px;
+                display: flex;
+                align-items: center;
                 padding: 8px;
+                background-color: white;
+                border: 2px solid white;
+                border-radius: 8px;
+            }
+
+            #search-input {
+                border: 0px;
+                outline: none;
+            }
+
+            .common-categories {
+                margin: 12px;
+                padding: 8px 20px 12px 0;
                 transition: border-bottom .15s ease;
             }
 
@@ -67,8 +88,10 @@ const commonCategories = ["Italian", "American", "Asian"]
             }
 
             .hover-arrow {
+                position: absolute;
                 fill: white;
             }
+
         </style>
 	</head>
 	<body>
@@ -77,10 +100,17 @@ const commonCategories = ["Italian", "American", "Asian"]
         <header>
             <div class="landing-header">
                 <div>
-                    <h1>Food Review</h1>
+                    <h1>Tastebud</h1>
                 </div>
                 <div class="search-container">
-                    <p>Search box here</p>
+                    <div class="pseudo-input-container">
+                        <input 
+                            type="text" 
+                            name="search-input" 
+                            id="search-input"
+                            placeholder="What suits your taste today?"
+                        />
+                    </div>
                     <div>
                         {commonCategories.map((category) => ( 
                             <a 
