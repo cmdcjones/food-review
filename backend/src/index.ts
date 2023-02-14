@@ -1,8 +1,11 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Express, Request, Response } from "express";
-import { getUser } from "./user/user";
+import { getUser, createUser } from "./user/user";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app: Express = express();
+const PORT = process.env.APP_PORT;
 let prisma: PrismaClient;
 
 declare global {
@@ -25,9 +28,10 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/user", getUser);
+app.post("/newuser", createUser);
 
 app.listen(process.env.APP_PORT, () => {
-    console.log(`Express server up at http://localhost:${process.env.APP_PORT}`);
+    console.log(`Express server up at http://localhost:${PORT}`);
 });
 
 export { prisma };
