@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Express, Request, Response } from "express";
-import { getUser, createUser } from "./user/user";
+import { getUser } from "./user/user";
+import { createUser, loginUser } from "./auth/auth.server";
 import * as dotenv from "dotenv";
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.get("/user", getUser);
 app.post("/newuser", createUser);
+app.post("/auth/login", loginUser);
 
 app.listen(process.env.APP_PORT, () => {
     console.log(`Express server up at http://localhost:${PORT}`);
