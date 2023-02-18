@@ -17,12 +17,10 @@ export async function createUser(req: Request, res: Response) {
     }
 
     try {
-        const checkUserExists = await Promise.all(
-            [
-            prisma.user.findUnique({ where: { username: username, }, }),
-            prisma.user.findUnique({ where: { email: email, }, }),
-        ]
-        );
+        const checkUserExists = await Promise.all([
+                prisma.user.findUnique({ where: { username: username, }, }),
+                prisma.user.findUnique({ where: { email: email, }, }),
+        ]);
 
         if (checkUserExists.some(data => data !== null)) {
             res.status(400).json({ message: "A user with this username/email already exists." });
