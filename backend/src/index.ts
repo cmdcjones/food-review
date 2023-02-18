@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const app: Express = express();
+app.use(express.json());
 const PORT = process.env.APP_PORT;
 let prisma: PrismaClient;
 
@@ -29,6 +30,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.get("/user", getUser);
+// TODO: move createUser to auth
 app.post("/newuser", createUser);
 app.post("/auth/login", loginUser);
 
