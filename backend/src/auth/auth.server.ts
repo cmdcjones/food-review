@@ -5,7 +5,6 @@ import { prisma } from "..";
 const SALT_ROUNDS = 12;
 
 export async function createUser(req: Request, res: Response) {
-    
     const { username, password, email, first_name, last_name } = req.body;
 
     if (!username || !password) {
@@ -37,7 +36,7 @@ export async function createUser(req: Request, res: Response) {
                     },
                 });
 
-                res.status(200).json({ username: newUser?.username, password: newUser?.password });
+                res.status(200).json({ username: newUser?.username });
             }
         } catch (err) {
             res.status(500).json({ message: "There was an error creating a new user record.", err });
