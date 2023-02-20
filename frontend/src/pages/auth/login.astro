@@ -1,0 +1,46 @@
+---
+const pageTitle = "Sign Up - Tastebud";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{pageTitle}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="generator" content={Astro.generator} />
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="/">
+            <section>
+                <input 
+                    type="text"
+                    id="first_name"
+                    placeholder="First Name"
+                    required
+                >
+                <input 
+                    type="text"
+                    id="last_name"
+                    placeholder="Last Name"
+                    required
+                >
+            </section>
+            <section>
+                <input 
+                    type="email"
+                    id="email"
+                    placeholder="Email"
+                    required
+                >
+                <input 
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+            </section>
+        </form>
+    </body>
+</html>
