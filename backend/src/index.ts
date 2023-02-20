@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import express, { Express, Request, Response } from "express";
+import cors from "cors";
 import { getUser } from "./user/user";
 import { createUser, loginUser } from "./auth/auth.server";
 import * as dotenv from "dotenv";
@@ -7,7 +8,11 @@ dotenv.config();
 
 const app: Express = express();
 app.use(express.json());
+app.use(cors({
+    origin: "http://localhost:3000",
+}));
 const PORT = process.env.APP_PORT;
+
 let prisma: PrismaClient;
 
 declare global {
